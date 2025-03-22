@@ -1,9 +1,12 @@
 document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
+
   const nameInput = event.target.name.value;
   const email = event.target.email.value;
   const message = event.target.message.value;
   const imgUrl = event.target.imgurl.value;
+
+  // document.getElementsByClassName("delete-contacts");
 
   // NAME VALIDATION
   if (nameInput.length < 3) {
@@ -29,7 +32,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
   if (!imgurlRegex.test(imgUrl)) {
     alert("URL invalido: Inserte una extension de imagen");
     return;
-  } else alert("Formulario enviado con éxito");
+  }
+  // FORM SENT SUCCESFULLY
+  else alert("Formulario enviado con éxito");
   event.target.submit();
   storeLocalData(nameInput, email, message, imgUrl);
 });
@@ -45,7 +50,17 @@ function storeLocalData(nameInput, email, message, imgUrl) {
   localStorage.setItem("userData", JSON.stringify(newUserData));
 }
 
-// if (imageUrl.length < 3) {
-//   alert("Inserte un URL de imagen valido:");
-//   return;
+// document
+//   .getElementsByClassName("delete-contacts")
+//   .addEventListener("click", function deleteAllContacts() {
+//     localStorage.clear();
+//   });
+
+btnClearContacts.onclick = function deleteAllContacts() {
+  localStorage.clear();
+  if (localStorage.length === 0) lsOutput.innerHTML = "";
+};
+// function deleteAllContacts() {
+
+//   localStorage.clear();
 // }
