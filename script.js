@@ -6,8 +6,6 @@ document.querySelector("form").addEventListener("submit", function (event) {
   const message = event.target.message.value;
   const imgUrl = event.target.imgurl.value;
 
-  // document.getElementsByClassName("delete-contacts");
-
   // NAME VALIDATION
   if (nameInput.length < 3) {
     alert("El nombre debe contener 3 caracteres o mas");
@@ -50,17 +48,12 @@ function storeLocalData(nameInput, email, message, imgUrl) {
   localStorage.setItem("userData", JSON.stringify(newUserData));
 }
 
-// document
-//   .getElementsByClassName("delete-contacts")
-//   .addEventListener("click", function deleteAllContacts() {
-//     localStorage.clear();
-//   });
-
-btnClearContacts.onclick = function deleteAllContacts() {
+// DELETE ALL LOCAL CONTACTS ON CLICK
+btnClearContacts.onclick = function () {
   localStorage.clear();
-  if (localStorage.length === 0) lsOutput.innerHTML = "";
 };
-// function deleteAllContacts() {
 
-//   localStorage.clear();
-// }
+// DELETE ONE CONTACT ON CLICK
+btnClearOneContact.onclick = function () {
+  localStorage.removeItem("email");
+};
