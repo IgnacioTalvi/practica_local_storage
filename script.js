@@ -49,11 +49,16 @@ function storeLocalData(nameInput, email, message, imgUrl) {
 }
 
 // DELETE ALL LOCAL CONTACTS ON CLICK
-btnClearContacts.onclick = function () {
-  localStorage.clear();
-};
+document
+  .getElementById("btnClearContacts")
+  .addEventListener("click", function () {
+    localStorage.clear();
+    alert("Todos los contactos han sido eliminados.");
+  });
 
 // DELETE ONE CONTACT ON CLICK
-btnClearOneContact.onclick = function () {
-  localStorage.removeItem("email");
-};
+document
+  .getElementById("btnClearOneContact")
+  .addEventListener("click", function () {
+    localStorage.removeItem("email");
+  });
