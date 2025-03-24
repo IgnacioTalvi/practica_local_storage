@@ -1,3 +1,9 @@
+if (localStorage.getItem("userData")) {
+  alert("Ya existe la lista.");
+} else {
+  localStorage.setItem("userData", JSON.stringify([]));
+}
+
 document.querySelector("form").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -39,13 +45,13 @@ document.querySelector("form").addEventListener("submit", function (event) {
 
 // STORE DATA IN LOCAL STORAGE
 function storeLocalData(nameInput, email, message, imgUrl) {
-  let userData = [{ nameInput, email, message, imgUrl }];
-  let newUserData = JSON.parse(localStorage.getItem("userData"));
+  let userData = { nameInput, email, message, imgUrl };
+  let userList = JSON.parse(localStorage.getItem("userData"));
+  console.log(userList);
+  console.log(userData);
 
-  localStorage.setItem("userData", JSON.stringify(userData));
-
-  newUserData.push(...userData);
-  localStorage.setItem("userData", JSON.stringify(newUserData));
+  userList.push(userData);
+  localStorage.setItem("userData", JSON.stringify(userList));
 }
 
 // DELETE ALL LOCAL CONTACTS ON CLICK
@@ -57,8 +63,29 @@ document
   });
 
 // DELETE ONE CONTACT ON CLICK
-document
-  .getElementById("btnClearOneContact")
-  .addEventListener("click", function () {
-    localStorage.removeItem("email");
-  });
+// document
+//   .getElementById("btnClearOneContact")
+//   .addEventListener("click", function () {
+//     localStorage.removeItem("email");
+//   });
+
+// function deleteContact() {
+//   if (newUserData > 1) {
+//     removeItem("newUserData");
+//   }
+// }
+// DELETE ONE CONTACT ON CLICK
+// document
+//   .getElementById("btnClearOneContact")
+//   .addEventListener("click", function () {
+//     let lastUserData = [];
+
+//     {
+//       localStorage.removeItem("lastUserData");
+//     }
+//   });
+// if (userData) {
+//   localStorage.removeItem("userData");
+// }
+
+// localStorage.removeItem("email");
